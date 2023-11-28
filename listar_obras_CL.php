@@ -41,7 +41,7 @@
             </li>
             <li><hr class="dropdown-divider"></li>
             <li class="nav-item">
-            <a class="nav-link" href="./pages/citacoes.php">Citações</a>
+            <a class="nav-link" href="citacoes/citacoes.php">Citações</a>
             </li>
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
@@ -92,22 +92,18 @@
     </div>
     <!--CAROUSEL COM BANNERS TERMINA-->
     <!--CITAÇÕES COMEÇA-->
-    <main class="cards">
+     <main class="cards">
     <section class="card">
-        <img src="" alt=".">
-        <a href="">@dos_santos</a>
+        
         <span>“Se contar o acontecido já é uma traição com o vivido, pois muitas vezes, se trata de uma reconstrução malfeita de lembranças, recontar o que ouvimos pode ser dupla traição.” </span>
         <a id="ref" href="">-Canção para ninar meninos grandes </a>
     </section>
     <section class="card">
-        <img src="" alt=".">
-        <a href="">@murillo_ordonho11</a>
         <span>“As vezes a morte é leve como a poeira. E a vida se confunde com um pó branco qualquer.”</span>    
-        <a id= "ref" href="">-Olhos D’Água </a>
+        <a id= "ref" href="listar_obras_SL.php?id_obra=142&valor_obra=4">-Olhos D’Água </a>
     </section>
     <section class="card">
-        <img src="" alt=".">
-        <a href="">@nik_b4bolim</a>
+    
         <span>“Você só precisa tomar cuidado para não ir de um extremo a outro”, o dr. Max disse. “O excesso de amor é tão perigoso quanto a falta.”</span>
         <a id="ref" href="">-Uma mulher no escuro</a>
     </section>    
@@ -142,12 +138,13 @@
                    $nome_obra = $row['NOME_OBRA'];
                    $foto_obra = $row['FOTO_OBRA'];
                    $autor_obra = $row['AU_DI_OBRA'];
+                   $valor_obra = $row['VALOR_OBRA'];
 
                    echo '<div class="card swiper-slide">';
                    echo '<div class="image-content">';
                    echo '<span class="overlay"></span>';
                    echo '<div class="card-image">';
-                   echo "<a href='listar_obras_SL.php?id_obra=$id_obra'><img src='./imagens/img_livros/$foto_obra' alt='$nome_obra' class='card-img'></a>";
+                   echo "<a href='listar_obras_SL.php?id_obra=$id_obra&valor_obra=$valor_obra'><img src='./imagens/img_livros/$foto_obra' alt='$nome_obra' class='card-img'></a>";
                    echo '</div>';
                    echo '</div>';
                    echo '<div class="card-content">';
@@ -198,12 +195,13 @@
                    $foto_obra = $row['FOTO_OBRA'];
                    $autor_obra = $row['AU_DI_OBRA'];
                    $ano_obra = $row['ANO_OBRA'];
+                   $valor_obra = $row['VALOR_OBRA'];
 
                    echo '<div class="card swiper-slide">';
                    echo '<div class="image-content">';
                    echo '<span class="overlay"></span>';
                    echo '<div class="card-image">';
-                   echo "<a href='listar_obras_SL.php?id_obra=$id_obra'><img src='./imagens/img_series/$foto_obra' alt='$nome_obra' class='card-img'></a>";
+                   echo "<a href='listar_obras_SL.php?id_obra=$id_obra&valor_obra=$valor_obra'><img src='./imagens/img_series/$foto_obra' alt='$nome_obra' class='card-img'></a>";
                    echo '</div>';
                    echo '</div>';
                    echo '<div class="card-content">';
@@ -252,12 +250,13 @@
                    $nome_obra = $row['NOME_OBRA'];
                    $foto_obra = $row['FOTO_OBRA'];
                    $autor_obra = $row['AU_DI_OBRA'];
+                   $valor_obra = $row['VALOR_OBRA'];
 
                    echo '<div class="card swiper-slide">';
                    echo '<div class="image-content">';
                    echo '<span class="overlay"></span>';
                    echo '<div class="card-image">';
-                   echo "<a href='listar_obras_SL.php?id_obra=$id_obra'><img src='./imagens/img_filmes/$foto_obra' alt='$nome_obra' class='card-img'></a>";
+                   echo "<a href='listar_obras_SL.php?id_obra=$id_obra&valor_obra=$valor_obra'><img src='./imagens/img_filmes/$foto_obra' alt='$nome_obra' class='card-img'></a>";
                    echo '</div>';
                    echo '</div>';
                    echo '<div class="card-content">';
@@ -307,12 +306,13 @@
                    $nome_obra = $row['NOME_OBRA'];
                    $foto_obra = $row['FOTO_OBRA'];
                    $autor_obra = $row['AU_DI_OBRA'];
+                   $valor_obra = $row['VALOR_OBRA'];
 
                    echo '<div class="card swiper-slide">';
                    echo '<div class="image-content">';
                    echo '<span class="overlay"></span>';
                    echo '<div class="card-image">';
-                   echo "<a href='listar_obras_SL.php?id_obra=$id_obra'><img src='./imagens/img_novelas/$foto_obra' alt='$nome_obra' class='card-img'></a>";
+                   echo "<a href='listar_obras_SL.php?id_obra=$id_obra&valor_obra=$valor_obra'><img src='./imagens/img_novelas/$foto_obra' alt='$nome_obra' class='card-img'></a>";
                    echo '</div>';
                    echo '</div>';
                    echo '<div class="card-content">';
@@ -338,7 +338,146 @@
     </div>
     <!--VITRINE DE NOVELAS TERMINA --> 
 </div>
-    <!-- RODAPÉ  --> 
+<!-- RODAPÉ  --> 
+  
+<head>
+     
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> 
+  </head>
+  <style>
+      body {
+          position: relative;
+          min-height: 100vh;
+          margin: 0;
+          padding: 0;
+      }
+
+      .site-footer {
+          width: 100%;
+          background-color: #26272b;
+          padding: 50px 50px;
+          font-size: 15px;
+          line-height: 20px;
+          color: #fff;
+
+      }
+
+      .site-footer hr {
+          border-top-color: #bbb;
+          opacity: 0.3;
+          margin-top: 20px;
+          margin-bottom: 20px;
+      }
+
+      .site-footer h6 {
+          font-size: 18px;
+          text-transform: uppercase;
+          margin-top: 10px;
+          margin-bottom: 20px;
+          letter-spacing: 2px;
+          color: #29aafe;
+      }
+
+      .site-footer p.text-justify {
+          text-align: justify;
+          margin-bottom: 20px;
+      }
+
+      .footer-links {
+          padding-left: 0;
+          list-style: none;
+      }
+
+      .footer-links li {
+          display: block;
+      }
+
+      .footer-links a {
+          color: #737373;
+      }
+
+      .footer-links a:active,
+      .footer-links a:focus,
+      .footer-links a:hover {
+          color: #3366cc;
+          text-decoration: none;
+      }
+
+      .social-icons li {
+          display: inline-block;
+          
+      }
+      .social-icons {
+        text-align: right; /* Isso alinha os ícones mais para a esquerda */
+       
+        
+    }
+
+      .social-icons a {
+        background-color: #696969; /* Cor de fundo cinza */
+          color: #fff;
+        //   text-align: center;
+          font-size: 16px;
+          display: inline-block;
+          line-height: 44px;
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          -webkit-transition: all 0.2s linear;
+          -o-transition: all 0.2s linear;
+          transition: all 0.2s linear;
+      }
+
+
+
+      @media (max-width: 767px) {
+          .site-footer {
+              padding-bottom: 0;
+          }
+          .site-footer .copyright-text,
+          .site-footer .social-icons {
+              text-align: center;
+          }
+
+      }
+      .text-justify {
+          text-align: justify;
+      }
+  </style>
+
+  <footer class="site-footer">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6 ">
+                  <h6>Quem Somos?</h6>
+                  <p class="text-justify">Somos uma rede social destinada para apreciadores de livros, filmes, séries e novelas; com o objetivo de enaltecer nossas produções nacionais.</p>
+              </div>
+              <div class="col-md-6 col-md-3"></div>
+              <div class="col-md-3 ">
+                  <h6>Links</h6>
+                  <ul class="footer-links">
+                      <li><a href="./termos_qs/quem_somos.php">Sobre Nós</a></li>
+                      <li><a href="./termos_qs/termos_de_Uso.php">Termos de Uso</a></li>
+                      <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=liverbrasil@gmail.com">Fale Conosco</a></li>
+                  </ul>
+              </div>
+          </div>
+          <hr>
+      </div>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-3">
+                  <p class="copyright-text">Copyright &copy; 2023</p>
+              </div>
+              <div class=" col-sm-7 ">
+                  <ul class="social-icons">
+                      <li><a class="instagram" href="https://www.instagram.com/liverbr_/"><i class="fa fa-instagram"></i></a></li>
+                      <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </footer>';
     
 <!-- RODAPÉ  --> 
 

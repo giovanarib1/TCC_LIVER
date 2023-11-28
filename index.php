@@ -5,7 +5,7 @@ include "funcoes/functions.php";
 
 // Verifica se o usuário está logado
 if (isset($_SESSION['ID_USUARIO'])) {
-    header('Location: listar_obras_CL.php');
+    header('Location: timeline.php');
     exit(); // O código será interrompido aqui se o usuário não estiver logado
 }
 else{
@@ -15,20 +15,16 @@ mostrarNavbar();
     <!--CITAÇÕES COMEÇA-->
     <main class="cards">
     <section class="card">
-        <img src="" alt=".">
-        <a href="">@dos_santos</a>
+        
         <span>“Se contar o acontecido já é uma traição com o vivido, pois muitas vezes, se trata de uma reconstrução malfeita de lembranças, recontar o que ouvimos pode ser dupla traição.” </span>
         <a id="ref" href="">-Canção para ninar meninos grandes </a>
     </section>
     <section class="card">
-        <img src="" alt=".">
-        <a href="">@murillo_ordonho11</a>
         <span>“As vezes a morte é leve como a poeira. E a vida se confunde com um pó branco qualquer.”</span>    
-        <a id= "ref" href="">-Olhos D’Água </a>
+        <a id= "ref" href="listar_obras_SL.php?id_obra=142&valor_obra=4">-Olhos D’Água </a>
     </section>
     <section class="card">
-        <img src="" alt=".">
-        <a href="">@nik_b4bolim</a>
+    
         <span>“Você só precisa tomar cuidado para não ir de um extremo a outro”, o dr. Max disse. “O excesso de amor é tão perigoso quanto a falta.”</span>
         <a id="ref" href="">-Uma mulher no escuro</a>
     </section>    
@@ -50,7 +46,7 @@ mostrarNavbar();
                 mysqli_query($con,'SET character_set_client=utf8');  
                 mysqli_query($con,'SET character_set_results=utf8'); 
                 // Selecionando os livros da tabela
-                $query = "SELECT * FROM obra WHERE VALOR_OBRA = 4";
+                $query = "SELECT * FROM obra WHERE VALOR_OBRA = 4 ORDER BY RAND(50)";
                 $result = mysqli_query($con, $query);
 
 
@@ -108,7 +104,7 @@ mostrarNavbar();
                 mysqli_query($con,'SET character_set_client=utf8');  
                 mysqli_query($con,'SET character_set_results=utf8'); 
                 // Selecionando as séries da tabela
-                $query = "SELECT * FROM obra WHERE VALOR_OBRA = 1";
+                $query = "SELECT * FROM obra WHERE VALOR_OBRA = 1 ORDER BY RAND(50)";
                 $result = mysqli_query($con, $query);
 
                 // Checa se a busca retornou resultados
@@ -164,7 +160,7 @@ mostrarNavbar();
                 mysqli_query($con,'SET character_set_client=utf8');  
                 mysqli_query($con,'SET character_set_results=utf8'); 
                 // Selecionando as séries da tabela
-                $query = "SELECT * FROM obra WHERE VALOR_OBRA = 2";
+                $query = "SELECT * FROM obra WHERE VALOR_OBRA = 2 ORDER BY RAND(50)";
                 $result = mysqli_query($con, $query);
 
                 // Checa se a busca retornou resultados
@@ -176,6 +172,7 @@ mostrarNavbar();
                    $foto_obra = $row['FOTO_OBRA'];
                    $autor_obra = $row['AU_DI_OBRA'];
                    $valor_obra = $row['VALOR_OBRA'];
+                   $ano_obra = $row['ANO_OBRA'];
 
                    echo '<div class="card swiper-slide">';
                    echo '<div class="image-content">';
@@ -220,7 +217,7 @@ mostrarNavbar();
                 mysqli_query($con,'SET character_set_client=utf8');  
                 mysqli_query($con,'SET character_set_results=utf8'); 
                 // Selecionando as séries da tabela
-                $query = "SELECT * FROM obra WHERE VALOR_OBRA = 3";
+                $query = "SELECT * FROM obra WHERE VALOR_OBRA = 3 ORDER BY RAND(50)";
                 $result = mysqli_query($con, $query);
 
                 // Checa se a busca retornou resultados
@@ -232,6 +229,7 @@ mostrarNavbar();
                    $foto_obra = $row['FOTO_OBRA'];
                    $autor_obra = $row['AU_DI_OBRA'];
                    $valor_obra = $row['VALOR_OBRA'];
+                    $ano_obra = $row['ANO_OBRA'];
 
                    echo '<div class="card swiper-slide">';
                    echo '<div class="image-content">';
@@ -267,7 +265,7 @@ mostrarNavbar();
 </div> <!--Fecha Container-Main-->
     <!-- RODAPÉ  --> 
     <?php } 
-    Rodape();
+    gereRodape();
     ?>
 <!-- RODAPÉ  --> 
 

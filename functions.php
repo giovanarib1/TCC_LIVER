@@ -154,6 +154,7 @@ function mostrarNavbar() {
     </div>';
 }
 ?>
+
 <?php
 
 function Rodape() {
@@ -379,4 +380,275 @@ function Rodape() {
     </html>
     ';
 }
+?>
+
+<?php 
+require_once('../PHPMailer/src/PHPMailer.php');
+require_once('../PHPMailer/src/SMTP.php');
+require_once('../PHPMailer/src/Exception.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+ function emailUsuario()
+ {
+      $email = $_GET['email'];
+
+      $mail = new PHPMailer(true);
+
+      try {
+          
+          $mail->isSMTP();
+          $mail->Host = 'smtp.gmail.com';
+          $mail->SMTPAuth = true;
+          $mail->Username = 'liverbrasil1@gmail.com';
+          $mail->Password = 'sucmwgnfyeldjvxr';   
+          $mail->Port = 587;
+      
+          $mail->setFrom('liverbrasil1@gmail.com');
+          $mail->addAddress("$email");
+          $mail->isHTML(true);
+          $mail->Subject = 'Cadastro da obra realizado com sucesso!';
+          $mail->Body = 'Nós da equipe Liver verificamos aqui, e sim, a sua obra é brasileira! Acesse o site agora para resenhar, curtir, citar e adicionar a obra aos favoritos! <a href="www.liverbr.com" target="_blank"><button>Acesse</button></a> ';
+
+          if(!$mail->send()) {
+              echo "<script>alert('Erro ao enviar o e-mail. Tente novamente.');</script>";
+          } else {
+              echo "<script>alert('E-mail enviado a $email com sucesso!');</script>";   
+          } 
+          
+      }  catch (Exception $e) {
+          echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
+      }
+  }
+
+?>
+
+<?php 
+function cadastroLivro(){
+  
+include "conexao.php";
+
+mysqli_query($con, "SET NAMES 'utf8'");
+mysqli_query($con, 'SET character_set_connection=utf8');
+mysqli_query($con, 'SET character_set_client=utf8');
+mysqli_query($con, 'SET character_set_results=utf8');
+
+
+  session_start();
+
+  // Verifica se o usuário está logado
+  if (!isset($_SESSION['ID_USUARIO'])) {
+  header('Location: ../index.html');
+  exit();
+  }
+
+  $idUsuario = $_SESSION['ID_USUARIO'];
+  $nome = $_GET['nomelivro'];
+  $autor = $_GET['autor'];
+  $ano = $_GET['anolivro'];
+  $sinopse = $_GET['sinopselivro'];
+  $foto = $_GET['fotolivro'];
+  $editora = $_GET['editora'];
+  $classif = $_GET['classiflivro'];
+  $paginas = $_GET['paginas'];
+
+  $sql= "INSERT INTO obra (VALOR_OBRA, DESC_OBRA, NOME_OBRA, FOTO_OBRA, AU_DI_OBRA, ANO_OBRA, perfil_ID_PERFIL, perfil_usuario_ID_USUARIO) 
+         VALUES (4, '$sinopse','$nome','$foto','$autor','$ano',$idUsuario, $idUsuario)";
+
+  if (!mysqli_query($con,$sql)) {
+      
+      echo "<script>alert('Ocorreu um erro. Tente novamente mais tarde.');</script>";
+  } else {
+      $id_obra = mysqli_insert_id($con);
+
+      //INNER JOIN
+      $sqlSelectLivros = "SELECT * FROM obra INNER JOIN livros ON obra.ID_OBRA = livros.obra_ID_OBRA WHERE obra.ID_OBRA = $id_obra";
+
+      //INSERT tabela livros
+      $sqlInsertLivros = "INSERT INTO livros (obra_ID_OBRA, obra_perfil_ID_PERFIL, obra_perfil_usuario_ID_USUARIO, VALOR_OBRA, EDITORA_LIVRO, PAGINAS_LIVRO, C_IND_LIVRO)
+                          VALUES ($id_obra, $idUsuario, $idUsuario, 4, '$editora', '$paginas', '$classif')";
+      $resultInsertLivros = $con->query($sqlInsertLivros);
+  } 
+  
+  if (!mysqli_query($con, $sqlSelectLivros)) {
+      echo "<script>alert('Erro ao cadastrar obra. Tente novamente.');</script>";
+  } else if (!mysqli_query($con,$sqlInsertLivros)){
+      echo "<script>alert('Erro ao cadastrar livro. Tente novamente.');</script>";
+  } else {
+    echo "";
+  }
+
+  }
+?>
+
+<?php 
+function cadastroFilme(){
+  include "conexao.php";
+
+  mysqli_query($con, "SET NAMES 'utf8'");
+  mysqli_query($con, 'SET character_set_connection=utf8');
+  mysqli_query($con, 'SET character_set_client=utf8');
+  mysqli_query($con, 'SET character_set_results=utf8');
+
+
+  session_start();
+  // Verifica se o usuário está logado
+  if (!isset($_SESSION['ID_USUARIO'])) {
+  header('Location: ../index.html');
+  exit();
+  }
+
+  $idUsuario = $_SESSION['ID_USUARIO'];
+  $nome = $_GET['nomefilme'];
+  $diretor = $_GET['diretorfilme'];
+  $ano = $_GET['anofilme'];
+  $elenco = $_GET['elencofilme'];
+  $sinopse = $_GET['sinopsefilme'];
+  $duracao = $_GET['duracao'];
+  $distrib = $_GET['distfilme'];
+  $produtora = $_GET['prodfilme'];
+  $classif = $_GET['classiffilme'];
+  $foto = $_GET['fotofilme'];
+
+  $sql= "INSERT INTO obra (VALOR_OBRA, DESC_OBRA, NOME_OBRA, FOTO_OBRA, AU_DI_OBRA, ANO_OBRA, perfil_ID_PERFIL, perfil_usuario_ID_USUARIO) 
+         VALUES (2, '$sinopse','$nome','$foto','$diretor','$ano',$idUsuario, $idUsuario)";
+
+  if (!mysqli_query($con,$sql)) {
+      echo "<script>alert('Ocorreu um erro. Tente novamente mais tarde.');</script>";
+      echo "Erro na inserção: " . mysqli_error($con);
+  } else {
+      $id_obra = mysqli_insert_id($con);
+      
+      //INNER JOIN
+      $sqlSelectFilmes = "SELECT * FROM obra INNER JOIN filmes ON obra.ID_OBRA = filmes.obra_ID_OBRA WHERE obra.ID_OBRA = $id_obra";
+
+      //INSERT tabela filmes
+      $sqlInsertFilmes = "INSERT INTO filmes (VALOR_OBRA, PRODUTORA_FILME, DISTRIBUIDORA_FILME, C_IND_FILME, DURACAO, ELENCO, obra_ID_OBRA, obra_perfil_ID_PERFIL, obra_perfil_usuario_ID_USUARIO) 
+                          VALUES (2, '$produtora', '$distrib', '$classif', '$duracao', '$elenco', $id_obra, $idUsuario, $idUsuario)";
+      
+      if (!mysqli_query($con, $sqlSelectFilmes)){
+          echo "<script>alert('Erro ao cadastrar obra. Tente novamente.');</script>";  
+      } else if (!mysqli_query($con,$sqlInsertFilmes)) {
+          echo "<script>alert('Erro ao cadastrar filme. Tente novamente.');</script>";
+      } else {
+          echo "";
+      }  
+          } 
+  }
+?>
+
+<?php 
+    function cadastroSerie(){
+    include "conexao.php";
+
+    mysqli_query($con, "SET NAMES 'utf8'");
+    mysqli_query($con, 'SET character_set_connection=utf8');
+    mysqli_query($con, 'SET character_set_client=utf8');
+    mysqli_query($con, 'SET character_set_results=utf8');
+
+      
+      session_start();
+      // Verifica se o usuário está logado
+      if (!isset($_SESSION['ID_USUARIO'])) {
+      header('Location: ../index.html');
+      exit();
+      }
+    
+      $idUsuario = $_SESSION['ID_USUARIO'];
+      $nome = $_GET['nomeserie'];
+      $diretor = $_GET['diretorserie'];
+      $ano = $_GET['anoserie'];
+      $elenco = $_GET['elencoserie'];
+      $sinopse = $_GET['sinopseserie'];
+      $temporadas = $_GET['tempserie'];
+      $distrib = $_GET['distserie'];
+      $produtora = $_GET['prodserie'];
+      $classif = $_GET['classifserie'];
+      $foto = $_GET['fotoserie'];
+    
+      $sql= "INSERT INTO obra (VALOR_OBRA, DESC_OBRA, NOME_OBRA, FOTO_OBRA, AU_DI_OBRA, ANO_OBRA, perfil_ID_PERFIL, perfil_usuario_ID_USUARIO) 
+             VALUES (1, '$sinopse','$nome','$foto','$diretor','$ano',$idUsuario, $idUsuario)";
+    
+      if (!mysqli_query($con,$sql)) {
+          echo "<script>alert('Ocorreu um erro. Tente novamente mais tarde.');</script>";
+          echo "Erro na inserção: " . mysqli_error($con);
+      } else {
+          $id_obra = mysqli_insert_id($con);
+    
+          //INNER JOIN
+          $sqlSelectSeries = "SELECT * FROM obra INNER JOIN series ON obra.ID_OBRA = series.obra_ID_OBRA WHERE obra.ID_OBRA = $id_obra";
+
+          //INSERT tabela series
+          $sqlInsertSeries = "INSERT INTO series (obra_ID_OBRA, obra_perfil_ID_PERFIL, obra_perfil_usuario_ID_USUARIO, VALOR_OBRA, PRODUTORA_SERIE, DISTRIBUIDORA_SERIE, TEMPORADAS_SERIE, C_IND_SERIE, ELENCO_SERIE) 
+                              VALUES ($id_obra, $idUsuario, $idUsuario, 1, '$produtora', '$distrib', '$temporadas', '$classif', '$elenco')";
+
+          if (!mysqli_query($con, $sqlSelectSeries)) {
+              echo "<script>alert('Erro ao cadastrar obra. Tente novamente.');</script>";
+          } else if (!mysqli_query($con, $sqlInsertSeries)){
+              echo "<script>alert('Erro ao cadastrar série. Tente novamente.');</script>";
+          } else {
+          echo ""; 
+              } 
+      }
+    }
+?> 
+
+<?php 
+        function cadastroNovela(){
+          include "conexao.php";
+          
+          mysqli_query($con, "SET NAMES 'utf8'");
+          mysqli_query($con, 'SET character_set_connection=utf8');
+          mysqli_query($con, 'SET character_set_client=utf8');
+          mysqli_query($con, 'SET character_set_results=utf8');
+
+          
+          session_start();
+          // Verifica se o usuário está logado
+          if (!isset($_SESSION['ID_USUARIO'])) {
+          header('Location: ../index.html');
+          exit();
+          }
+        
+          $idUsuario = $_SESSION['ID_USUARIO'];
+          $nome = $_GET['nomenovela'];
+          $diretor = $_GET['diretornovela'];
+          $ano = $_GET['anonovela'];
+          $elenco = $_GET['elenconovela'];
+          $sinopse = $_GET['sinopsenovela'];
+          $emissora = $_GET['emissora'];
+          $episodios = $_GET['epsnovela'];
+          $classif = $_GET['classifnovela'];
+          $foto = $_GET['fotonovela'];
+        
+          $sql= "INSERT INTO obra (VALOR_OBRA, DESC_OBRA, NOME_OBRA, FOTO_OBRA, AU_DI_OBRA, ANO_OBRA, perfil_ID_PERFIL, perfil_usuario_ID_USUARIO) 
+                 VALUES (3, '$sinopse','$nome','$foto','$diretor','$ano',$idUsuario, $idUsuario)";
+
+          if (!mysqli_query($con,$sql)) {
+              echo "<script>alert('Ocorreu um erro. Tente novamente mais tarde.');</script>";
+
+          } else {
+          $id_obra = mysqli_insert_id($con);
+
+          //INNER JOIN
+          $sqlSelectNovelas = "SELECT * FROM obra INNER JOIN novelas ON obra.ID_OBRA = novelas.obra_ID_OBRA WHERE obra.ID_OBRA = $id_obra";
+
+          //INSERT tabela filmes
+          $sqlInsertNovelas = "INSERT INTO novelas (obra_ID_OBRA, obra_perfil_ID_PERFIL, obra_perfil_usuario_ID_USUARIO, VALOR_OBRA, EMISSORA_NOVELA, EPISODIOS_NOVELA, ELENCO_NOVELA, C_IND_NOVELA) 
+                               VALUES ($id_obra, $idUsuario, $idUsuario, 3, '$emissora', '$episodios', '$elenco', '$classif')";
+
+          if (!mysqli_query($con, $sqlSelectNovelas)){
+              echo "<script>alert('Erro ao cadastrar obra. Tente novamente.');</script>";
+          } else if (!mysqli_query($con, $sqlInsertNovelas)){
+              echo "<script>alert('Erro ao cadastrar novela. Tente novamente.');</script>";
+          } else {
+              echo "";
+
+          }
+  }    
+
+      
+  }
 ?>

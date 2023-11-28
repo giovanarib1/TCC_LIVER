@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./imagens/logo2_liver.png" type="image/x-icon">
-  <title>LiVer</title>
+  <title>Liver</title>
   <!-- Pesquisar CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <!-- Bootstrap CSS -->
@@ -86,8 +86,9 @@
     }
 
     .card {
-      color: black;
-      border: 1px solid white;
+      color: white;
+      background-color: #1c1c253f;
+      border: 1px solid rgba(255, 255, 255, 0.404);
       margin: 1px;
       padding: 2px;
     }
@@ -95,6 +96,7 @@
     .card img {
       height: 400px;
       width: 250px;
+      margin: 30px 80px;
     }
 
     h2 {
@@ -107,11 +109,31 @@
       font-size: 16px;
       color: #FFF;
       padding: 8px 16px;
-      background-color: #4070F4;
+      background-color: #292c41;
       border-radius: 6px;
       margin: 14px;
       cursor: pointer;
       transition: all 0.3s ease;
+      margin-left: -5%;
+    }
+    .button:hover{
+      background-color: #212230;
+      border: none;
+    }
+
+
+    .card-title{
+      margin-top: 3%;
+      font-size: 3vh;
+      text-align: center;
+    }
+
+    .card-text{
+      position: relative;
+      right: 45px;
+      font-size: 2.3vh;
+      text-align: justify;
+    
     }
   </style>
 </head>
@@ -120,59 +142,73 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"></script>
 
-<!--NAVBAR-->
-<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand">
-      <img src="./imagens/liver_logo.png" alt="Logo LiVer" src="index.php" width="100" height="40">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse me-auto y-2 my-lg-0" id="navbarScroll">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Início</a>
-        </li>
-        <li><hr class="dropdown-divider"></li>
-        <li class="nav-item">
-          <a class="nav-link" href="./login/index.html">Login</a>
-        </li>
-        <li><hr class="dropdown-divider"></li>
-        <li class="nav-item">
-          <a class="nav-link" href="./pages/citacoes.php">Citações</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
-             aria-expanded="false">Categorias</a>
-          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-            <li><a class="dropdown-item" href="#">Livros</a></li>
-            <li><a class="dropdown-item" href="#">Filmes</a></li>
-            <li><a class="dropdown-item" href="#">Séries</a></li>
-            <li><a class="dropdown-item" href="#">Novelas</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="d-flex" action="<?php $_SERVER['PHP_SELF'] ?>" method="GET">
-        <div class="search-box">
-          <input class="search-txt" type="text" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisar">
-          <a class="search-btn" href="#">
-            <i class="fas fa-search"></i>
-          </a>
+    <!--NAVBAR-->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark w-100">
+        <div class="container">
+            <a class="navbar-brand">
+                <img src="./imagens/liver_logo.png" alt="Logo LiVer" src="../index.php" width="100" height="40"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./index.php">Início</a>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <?php
+                    // Inicie a sessão se ainda não estiver iniciada
+                    session_start();
+
+                    // Verifique se o ID_USUARIO está na sessão
+                    if(isset($_SESSION['ID_USUARIO']) && !empty($_SESSION['ID_USUARIO'])) {
+                        // O ID_USUARIO está configurado na sessão
+                        echo '<li class="nav-item">
+                                <a class="nav-link" href="./perfil/perfil_user.php">Meu perfil</a>
+                            </li>';
+                    } else {
+                        // O ID_USUARIO não está configurado na sessão
+                        echo '<li class="nav-item">
+                                <a class="nav-link" href="./login/index.html">Login</a>
+                            </li>';
+                    }
+                    ?>
+                    <li><hr class="dropdown-divider"></li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="./citacoes/citacoes.php">Citações</a>
+                   </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="./categorias/categ_livros.php">Livros</a></li>
+                            <li><a class="dropdown-item" href="./categorias/categ_filmes.php">Filmes</a></li>
+                            <li><a class="dropdown-item" href="./categorias/categ_series.php">Séries</a></li>
+                            <li><a class="dropdown-item" href="./categorias/categ_novelas.php">Novelas</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            
+                <form class="d-flex" action="/pesquisar.php" method="GET">
+                    <div class="search-box"> 
+                        <input class="search-txt" type="text" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisar">
+                        <a class="search-btn" href="#">
+                            <i class="fas fa-search"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
         </div>
-      </form>
-    </div>
-  </div>
-</nav>
-<br><br><br><br>
+    </nav>
+    <br><br><br><br>
+    <!--NAVBAR TERMINA-->
 
 <?php
 include "conexao.php";
 mysqli_set_charset($con, "utf8");
 $nomex = $_GET["pesquisar"];
 
-$pesq = mysqli_query($con, "SELECT NOME_OBRA, FOTO_OBRA, DESC_OBRA, ID_OBRA FROM obra WHERE NOME_OBRA LIKE '$nomex%'");
+$pesq = mysqli_query($con, "SELECT NOME_OBRA, FOTO_OBRA, DESC_OBRA, ID_OBRA, VALOR_OBRA FROM obra WHERE NOME_OBRA LIKE '$nomex%'");
 
 if (empty($nomex)) {
   echo "<h2>Nenhum termo foi pesquisado. Por favor, tente novamente!</h2>";
@@ -192,7 +228,8 @@ if (empty($nomex)) {
               <div class="card-body">
                 <h5 class="card-title"><?php echo $r['NOME_OBRA']; ?></h5>
                 <p class="card-text"><?php echo $r['DESC_OBRA']; ?></p>
-                <form action="detalhes_obras.php" method="GET">
+                <form action="listar_obras_SL.php" method="GET">
+                 <input type="hidden" name="valor_obra" value="<?php echo $r['VALOR_OBRA']; ?>">
                   <input type="hidden" name="id_obra" value="<?php echo $r['ID_OBRA']; ?>">
                   <button type="submit" class="button">Ver Mais</button>
                 </form>
