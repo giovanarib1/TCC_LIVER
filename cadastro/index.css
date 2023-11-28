@@ -1,7 +1,9 @@
 /* Google Fonts - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
+
 body{
+/* Estilos para o corpo da página */
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -11,12 +13,14 @@ body{
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  color: white;
 }
 
 
 /*Estilo da NAVBAR*/
 
     .navbar-nav {
+    /* Estilos para a barra de navegação */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -26,6 +30,7 @@ body{
     }
 
     .search-box{
+    /* Estilos para a caixa de pesquisa */
       position: absolute;
       top: 50%;
       left: 90%;
@@ -77,140 +82,510 @@ body{
       background-color: black; 
     }
     
+/* Fim do estilo da NAVBAR*/
+    
+
 
 /*Estilo do formulario*/
 
-.pagecadrastro {
-  position: absolute;
-  text-align: center;
-  font-size: var(--font-size-base);
-  color: var(--color-white);
-  font-family: var(--font-reem-kufi);
-  left: calc(50% - 150px);
+ /* Estilos para elementos relacionados ao formulário */
+
+.image-1-icon{
+  width:300px;
+  max-width:90% ;
+  height: none;
+  transform: translate(-2%, -2%);
+
+
 }
 
-.image-1-icon {
-  position: center;
-  top: -22px;
-  left: calc(50% - 175px);
-  width: 319px;
-  height: 126px;
-  object-fit: cover;
+.e-mail,.senha,.confirmar-senha {
+
+  transform:translate( 10px, 0px);
 }
 
-.frame-child {
-  position: absolute;
-  top: 100px;
-  left: calc(50% - 200px);
-  border-radius: var(--br-21xl);
-  background-color: var(--color-gainsboro);
-  border: 1px solid var(--color-white);
-  box-sizing: border-box;
-  width: 400px;
-  height: 580px;
-  display: inline-block;
+ 
+.barraemail ,.barrasenha , .barraconfirmar{
+
+  display: block;
+  width: 85%;
+  background: white;
+  height: 40px;
+  border-radius: 25px;
+   padding: 0 30px 0 68px;
+transform:translate( 10px, 0px);
+  border: none;
+
 }
 
 
-.conta {
-  color: white;
-  position: absolute;
-  top: 535px;
-  left: calc(50% - 170px);
-  display: inline-block;
-  width: 350px;
+.botao1{
 
-  }
-.botao1 {
-box-sizing: border-box;
-position: absolute;
-top: 500px;
-left: calc(50% - 62px);
 border-radius: var(--br-300-xl);
-width: 132px;
-height: 32px;
+width: 130px;
+height: 30px;
 background: #000000;
 border: 1px solid #FFFFFF;
 border-radius: 20px;
 color: #FFFFFF;
-  
+transform: translate(75%, 15%);
 }
 
-.barracell,
-.barraemail,
-.barranc,
-.barranu,
-.barrasenha {
-  border: 0;
-  background-color: var(--color-white);
+
+.frame-child{
+ 
+
+ position: relative;
+      max-width: 350px;
+      margin: auto;
+      border: 2px solid #ccc;
+      border-radius: 40px;
+      left:-5%;
+    }
+    .rmsa{
+      font-size: 24px;
+      transform: translate(3%, -5%);
+  }
+
+
+.conta{
+  font-size: 11px;
+
+transform: translate(13%, -2%);
+}
+.cnl{
+font-size: 24PX;
+transform: translate(3%, -5%);
+
+}
+.img-fundo img {
+  max-width: 100%;
+  width: 600px;
+
+  transform: translate(-80%,8%);
+
+
+}
+
+.img-fundo2 img {
+  max-width: 100%;
+  width: 700px;
+
+  transform: translate(-70%, 12%);
+}
+.pagecadastro{
+position:relative;
+  left: 30px;
+}
+
+.symbol-barraemail{
+  font-size: 13px;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
   position: absolute;
-  top: 452px;
-  left: calc(50% - 160px);
-  border-radius: var(--br-193xl);
-  width: 295px;
-  height: 30px;
+  border-radius: px;
+  bottom: 0;
+
+  width: 0%;
+  height: 17%;
+  padding-left: 15px;
+  left: 15px;
+  pointer-events: none;
+  color:black;
+
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
 }
-.barracell,
-.barraemail,
-.barranc,
-.barranu {
-  top: 394px;
-  left: calc(50% - 158px);
+
+.barraemail:focus + .focus-input100 + .symbol-barraemail {
+    color:#407BFF;
+  padding-left: 28px;
+
 }
-.barraemail,
-.barranc,
-.barranu {
-  top: 330px;
-  left: calc(50% - 160px);
+
+.inserir{
+font-size: 14px;
+  transform: translate(3%, -40%);
+
+
+
 }
-.barranc,
-.barranu {
-  top: 272px;
-}
-.barranc {
-  top: 209px;
-}
-.celular-opicional,
-.senha {
+
+
+
+.symbol-barraemail2{
+  font-size: 13px;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
   position: absolute;
-  top: 426px;
-  left: calc(50% - 169px);
-  display: inline-block;
-  width: 64px;
-  height: 26px;
+  border-radius: px;
+  bottom: 0;
+
+  width: 0%;
+  height: 10%;
+  padding-left: 15px;
+  left: 15px;
+  pointer-events: none;
+  color:black;
+
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
 }
-.celular-opicional {
-  top: 366px;
-  left: calc(50% - 185px);
-  width: 179px;
-  height: 28px;
+
+
+
+
+
+.barraemail:focus + .focus-input100 + .symbol-barraemail2 {
+    color:  #407BFF;
+  padding-left: 28px;
+
 }
-.e-mail,
-.nome-completo,
-.nome-de-usurio {
+
+.symbol-barrasenha2{
+ 
+
+  font-size: 13px;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
   position: absolute;
-  top: 308px;
-  left: calc(50% - 168px);
-  display: inline-block;
-  width: 62px;
-  height: 22px;
+ 
+  bottom: 0;
+
+
+  height: 72%;
+  padding-left: 15px;
+ left: 15px;
+  color:black;
+
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+
 }
-.nome-completo,
-.nome-de-usurio {
-  top: 245px;
-  left: calc(50% - 202px);
-  width: 205px;
-  height: 23px;
+
+.barrasenha:focus + .focus-input100 + .symbol-barrasenha2 {
+    color:  #407BFF;
+  padding-left: 28px;
+
 }
-.nome-completo {
-  top: 182px;
-  left: calc(50% - 217px);
-  width: 230px;
-  height: 17px;
-}
-.cadastre-se-no-liver {
+
+.symbol-confirmarsenha2{
+  font-size: 13px;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
   position: absolute;
-  top: 120px;
-  left: calc(50% - 161px);
-  font-size: var(--font-size-11xl);
+ 
+  bottom: 0;
+
+
+  height: 41%;
+  padding-left: 15px;
+ left: 15px;
+  color:black;
+
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
 }
+
+.barraconfirmar:focus + .focus-input100 + .symbol-confirmarsenha2 {
+    color: #407BFF;
+  padding-left: 28px;}
+
+
+.link{
+  color: white;
+}
+
+
+
+/* Fim estilo do formulario*/
+
+
+/* Responsivo*/
+
+/* Estilos específicos para telas com largura máxima de 1160px para os elementos relacionados ao formulário */
+@media(max-width:1366px){
+  .image-1-icon{
+  width:300px;
+  max-width:90% ;
+  height: none;
+  transform: translate(-2%, -2%);
+
+
+}
+
+ .cnl{
+      font-size: 24px;
+      transform: translate(0%, -5%);
+  }
+
+
+.e-mail,.senha,.confirmar-senha{
+  transform:translate( 0px, 0px);}
+
+
+.barraemail,.barrasenha,.barraconfirmar{
+
+  display: block;
+  width: 85%;
+  background: white;
+  height: 40px;
+  border-radius: 25px;
+  padding: 0 30px 0 68px;
+  transform: translate(-2%, -2%);
+  border: none;
+}
+
+
+
+.botao1{
+
+border-radius: var(--br-300-xl);
+width: 130px;
+height: 30px;
+background: #000000;
+border: 1px solid #FFFFFF;
+border-radius: 20px;
+color: #FFFFFF;
+transform: translate(67%, 15%);
+}
+
+
+.frame-child{
+ 
+
+ position: relative;
+      max-width: 325px;
+      margin: auto;
+      border: 2px solid #ccc;
+      border-radius: 40px;
+      left:-5%;
+
+      
+     
+
+}
+
+
+
+
+.conta{
+  font-size: 11px;
+
+transform: translate(13%, -2%);
+}
+
+
+
+  .img-fundo img {
+  max-width: 100%;
+  width: 570px;
+
+  transform: translate(-55%, 8%);
+
+
+}
+
+
+  .img-fundo2 img {
+  max-width: 100%;
+  width: 570px;
+
+  transform: translate(-55%, 15%);
+
+
+}
+
+.symbol-barraemail{
+  font-size: 13px;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  border-radius: px;
+  bottom: 0;
+
+  width: 0%;
+  height: 18%;
+  padding-left: 15px;
+  pointer-events: none;
+  color:black;
+   left:  8px;
+
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+
+
+
+
+.barraemail:focus + .focus-input100 + .symbol-barraemail {
+    color: #407BFF;;
+  padding-left: 28px;
+
+}
+
+
+.symbol-barraemail2{
+  font-size: 13px;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  border-radius: px;
+  bottom: 0;
+
+  width: 0%;
+  height: 10%;
+  padding-left: 15px;
+  pointer-events: none;
+  color:black;
+   left:  8px;
+
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+
+
+
+
+.barraemail:focus + .focus-input100 + .symbol-barraemail2 {
+    color: #407BFF;
+  padding-left: 28px;
+
+}
+
+.symbol-barrasenha2{
+  font-size: 13px;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  position: absolute;
+ 
+  bottom: 0;
+
+
+  height: 74%;
+  padding-left: 15px;
+   left: 8px;
+ 
+  color:black;
+
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.barrasenha:focus + .focus-input100 + .symbol-barrasenha2 {
+    color: #407BFF;
+  padding-left: 28px;
+
+}
+
+.symbol-confirmarsenha2{
+  font-size: 13px;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  position: absolute;
+ 
+  bottom: 0;
+
+
+  height: 42%;
+  padding-left: 15px;
+   left: 8px;
+ 
+  color:black;
+
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.confirmarsenha:focus + .focus-input100 + .symbol-confirmarsenha2 {
+    color: #407BFF;
+  padding-left: 28px;
+
+}
+.inserir{
+font-size: 14px;
+  transform: translate(
+    0%, -40%);
+
+
+
+}
+
+
+ /* Estilos específicos para telas com largura máxima de 1160px para os elementos relacionados ao formulário */
+
+@media (max-width: 1160px){
+
+   
+  .frame-child {position: relative;
+    
+      left: 1%;    
+  }
+
+
+  .img-fundo{
+    display:none;
+  }
+
+
+.img-fundo2{
+    display:none;
+  }
