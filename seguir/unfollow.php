@@ -24,7 +24,7 @@ if (isset($_GET['idU_Seguido'])) {
     if ($resultadoRemoverSeguir) {
         // Redireciona de volta para a página de perfil ou qualquer outra página desejada
         echo "<script>alert('Usuário deletado da lista seguindo');</script>";
-        header('refresh:1.5;../perfil/perfil_user.php');
+        header('refresh:1.5;../perfil.php?id_usuario=' . $idU_Seguido);  
         exit();
     } else {
         echo "<script>alert('Ocorreu um erro ao deixar de seguir o usuário.');</script>";

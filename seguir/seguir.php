@@ -19,7 +19,6 @@ if (isset($_POST['idU_Seguir'])) {
     $resultadoVerifica = mysqli_query($con, $sqlVerifica);
 
     if (mysqli_num_rows($resultadoVerifica) > 0) {
-        echo "<script>alert('Você já está seguindo o usuário.');</script>";
         header('refresh:1.5;../perfil.php?id_usuario=' . $idU_Seguido);
     } else {
         // Insere os dados na tabela de seguidores
@@ -28,7 +27,6 @@ if (isset($_POST['idU_Seguir'])) {
 
         // Verifica se a inserção foi bem-sucedida
         if ($resultado) {
-            echo "<script>alert('Você está seguindo o usuário!');</script>";
             header('refresh:1.5;../perfil.php?id_usuario=' . $idU_Seguido);    
         } else {
             echo "<script>alert('Erro ao seguir o usuário');</script>";
