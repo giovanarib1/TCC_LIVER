@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $mail = new PHPMailer(true);
 // Dados do cliente
 $emailDoCliente = $email; // Substitua pelo e-mail do cliente
-$nomeDoCliente = $_POST['txtnome'];
+
 
 try {
 	
@@ -42,7 +42,7 @@ try {
     $mail->addAddress("$email");
 	$mail->isHTML(true);
 	$mail->Subject = 'Recuperando minha senha do Liver';
-	$mail->Body = 'Redefina sua senha <a href="http://localhost/TCC_LIVER_TUDO_2_VERSAO_APRESENTACAO/novasenha.html" target="_blank"><button>aqui.</button></a> ';
+	$mail->Body = 'Redefina sua senha <a href="http://localhost/TCC_LIVER/novasenha.html" target="_blank"><button>aqui.</button></a> ';
 
 	if(!$mail->send()) {
 		echo "<script>alert('Erro ao enviar o e-mail. Tente novamente.');</script>";
