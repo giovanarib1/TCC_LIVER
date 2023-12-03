@@ -15,67 +15,11 @@ function mostrarNavbar() {
         <link rel="stylesheet" href="css/swiper-bundle.min.css">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <!-- CSS -->
         <link rel="stylesheet" href="css/style.css">
-        <style>
-            /* Estilo da NAVBAR */
-            .navbar-nav {
-                display: flex;
-                justify-content: start;
-                align-items: center;
-                height: 100%;
-                margin-top: 0px; 
-                margin-right: 100px;
-            }
 
-            .search-box {
-                position: absolute;
-                top: 50%;
-                left: 90%;
-                transform: translate(-50%, -50%);
-                background: white;
-                height: 30px;
-                border-radius: 20px;
-                padding: 5px; 
-            }
 
-            .search-box:hover > .search-txt {
-                width: 110px;
-                padding: 0 6px;
-                top: 50px;
-            }
-
-            .search-btn {
-                position: absolute;
-                color: black;
-                background: yellow;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                display: block;
-            }
-
-            .search-txt {
-                border: none;
-                background: none;
-                outline: none;
-                float: right;
-                padding: 0;
-                font-size: 14px;
-                transition: 1.2s;
-                width: 20px;
-                margin-left: 20px;
-                margin-top: -1px;
-                display: block;
-            }
-
-            .navbar {
-                position: fixed;
-                width: 100%;
-                left: 0;
-                background-color: black; 
-            }
-        </style>
     </head>
     <body>
     <!-- JS Bootstrap -->
@@ -102,8 +46,8 @@ function mostrarNavbar() {
                     </li>
                     <li><hr class="dropdown-divider"></li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./pages/citacoes.php">Citações</a>
-                    </li>
+                         <a class="nav-link" href="./citacoes/citacoes.php">Citações</a>
+                   </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
@@ -114,6 +58,8 @@ function mostrarNavbar() {
                         </ul>
                     </li>
                 </ul>
+
+            
                 <form class="d-flex" action="pesquisar.php" method="GET">
                     <div class="search-box"> 
                         <input class="search-txt" type="text" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisar">
@@ -127,6 +73,8 @@ function mostrarNavbar() {
     </nav>
     <br><br><br><br>
     <!--NAVBAR TERMINA-->
+
+
     <!--CAROUSEL COM BANNERS-->
     <div class="container">
         <div id="carouselExampleLight" class="carousel carousel-light slide" data-bs-ride="carousel">
@@ -153,106 +101,464 @@ function mostrarNavbar() {
         </div>
     </div>';
 }
-?>
-<?php
 
-function Rodape() {
-    echo ' <style> 
-    .footer{
-    position: absolute;
-    left:0;
-    right:0;
-    top: 2750px;
-    width: 100%;
-    display: flex;
-    height: 8%;
-    justify-content: space-between;
-    align-items: center;
-    background: #333;
-    padding: 0px 20px;
-    color: white;
-    }
-    
-    
-    .barra2 {
-    position: relative;
-      left:-1px;
-    height: 10px;
-    border: 1px solid #FDFDFD;
-    border-radius: 2px;
-    transform: rotate(-90deg);
-    }
-    
-    
-    .barra3 {
-    position: relative;
-     left: -4px;
-     height: 10px;
-    border: 1px solid #FDFDFD;
-    border-radius: 2px;
-    transform: rotate(-90deg);
-    
-    
-    }
-    
-    
-    .emailimg{
-        position: relative;
-      left:3px;
-      color: #fff;
+
+
+function gereRodape(){
+  echo '
+  <head>
+     
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> 
+  </head>
+  <style>
+      body {
+          position: relative;
+          min-height: 100vh;
+          margin: 0;
+          padding: 0;
+      }
+
+      .site-footer {
+          width: 100%;
+          background-color: #26272b;
+          padding: 50px 50px;
+          font-size: 15px;
+          line-height: 20px;
+          color: #fff;
+
+      }
+
+      .site-footer hr {
+          border-top-color: #bbb;
+          opacity: 0.3;
+          margin-top: 20px;
+          margin-bottom: 20px;
+      }
+
+      .site-footer h6 {
+          font-size: 18px;
+          text-transform: uppercase;
+          margin-top: 10px;
+          margin-bottom: 20px;
+          letter-spacing: 2px;
+          color: #29aafe;
+      }
+
+      .site-footer p.text-justify {
+          text-align: justify;
+          margin-bottom: 20px;
+      }
+
+      .footer-links {
+          padding-left: 0;
+          list-style: none;
+      }
+
+      .footer-links li {
+          display: block;
+      }
+
+      .footer-links a {
+          color: #737373;
+      }
+
+      .footer-links a:active,
+      .footer-links a:focus,
+      .footer-links a:hover {
+          color: #3366cc;
           text-decoration: none;
+      }
+
+      .social-icons li {
+          display: inline-block;
+          
+      }
+      .social-icons {
+        text-align: right; /* Isso alinha os ícones mais para a esquerda */
+       
+        
     }
-    .email{
-        position: relative;
-      left:-0px;
-      color: #fff;
-          text-decoration: none;
-    }
-    .quem{
-        position: relative;
-      left:-4px;
-      color: #fff;
-          text-decoration: none;
-    }
+
+      .social-icons a {
+        background-color: #696969; /* Cor de fundo cinza */
+          color: #fff;
+        //   text-align: center;
+          font-size: 16px;
+          display: inline-block;
+          line-height: 44px;
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          -webkit-transition: all 0.2s linear;
+          -o-transition: all 0.2s linear;
+          transition: all 0.2s linear;
+      }
+
+
+
+      @media (max-width: 767px) {
+          .site-footer {
+              padding-bottom: 0;
+          }
+          .site-footer .copyright-text,
+          .site-footer .social-icons {
+              text-align: center;
+          }
+
+      }
+      .text-justify {
+          text-align: justify;
+      }
+  </style>
+
+  <footer class="site-footer">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6 ">
+                  <h6>Quem Somos?</h6>
+                  <p class="text-justify">Somos uma rede social destinada para apreciadores de livros, filmes, séries e novelas; com o objetivo de enaltecer nossas produções nacionais.</p>
+              </div>
+              <div class="col-md-6 col-md-3"></div>
+              <div class="col-md-3 ">
+                  <h6>Links</h6>
+                  <ul class="footer-links">
+                      <li><a href="./termos_qs/quem_somos.php">Sobre Nós</a></li>
+                      <li><a href="./termos_qs/termos_de_Uso.php">Termos de Uso</a></li>
+                      <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=liverbrasil@gmail.com">Fale Conosco</a></li>
+                  </ul>
+              </div>
+          </div>
+          <hr>
+      </div>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-3">
+                  <p class="copyright-text">Copyright &copy; 2023</p>
+              </div>
+              <div class=" col-sm-7 ">
+                  <ul class="social-icons">
+                      <li><a class="instagram" href="https://www.instagram.com/liverbr_/"><i class="fa fa-instagram"></i></a></li>
+                      <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </footer>';
     
-    .termo{
-        position: relative;
-      left:-1px;
-      color: #fff;
-          text-decoration: none;
-    }
-    .insta{
-        position: relative;
-      left:-1px;
-      color: #fff;
-          text-decoration: none;
-    }
-    .twitter{
-        position: relative;
-      left:-1px;
-      color: #fff;
-          text-decoration: none;
-    }
-    </style>
-    <body>
-    <div class="footer fixed-bottom">
-          <h7 class="ano">&copy2023</h7>
-        <div class="sociais">
-            <div class="socia">
-                <a class="quem" href="#">Quem Somos</a>
-                <span class="barra3"></span>
-                <a class="termo" href="#">Termos de Uso</a>
-                <span class="barra2"></span>
-                <a class="emailimg" href="#"><i class="far fa-envelope" aria-hidden="true"></i></a>
-                <span class="email">liverbrasil1@gmail.com</span>
-                <a class="insta" href="https://www.instagram.com/liver"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                <a class="twitter" href="https://www.twitter.com/liver"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-            </div>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-    </html>
-    ';
 }
+function Rodape() {
+  
+  echo '
+  <head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> 
+  </head>
+  <style>
+
+  body {
+      position: relative;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+  }
+
+  .site-footer {
+      margin-top: 15%;
+      position: relative;
+      width: 103%;
+      background-color: #26272b;
+      padding: 50px 100px;
+      font-size: 15px;
+      line-height: 25px;
+      color: #fff;
+      
+  }
+
+  .site-footer hr {
+      border-top-color: #bbb;
+      opacity: 0.3;
+      margin-top: 20px;
+      margin-bottom: 20px;
+  }
+
+  .site-footer h6 {
+      font-size: 18px;
+      text-transform: uppercase;
+      margin-top: 10px;
+      margin-bottom: 10px; /* Reduzindo o espaçamento aqui */
+      letter-spacing: 2px;
+      color: #29aafe;
+  }
+
+  .site-footer p.text-justify {
+      text-align: justify;
+      text-decoration: none; /* Remove a decoração de link */
+
+  }
+  
+  .footer-links {
+    list-style: none; /* Remove os marcadores de lista */
+    padding: 0; /* Remova qualquer padding padrão */
+}
+
+.footer-links li {
+    margin-left: 0; /* Remove qualquer recuo (indentação) padrão */
+}
+
+.footer-links a {
+    color: #4f4f4f; /* Cor padrão para os links */
+    text-decoration: none; /* Remove a decoração de link (sublinhado) */
+}
+
+.footer-links a:hover {
+    color: #4747eb; /* Define a cor azul quando o mouse está em cima */
+}
+
+
+  .footer-links a:active,
+  .footer-links a:focus,
+  .footer-links a:hover {
+      color: #3366cc;
+      text-decoration: none;
+
+  }
+  .social-icons {
+    text-align: right; /* Isso alinha os ícones mais para a esquerda */
+   
+}
+
+  .social-icons li {
+      display: inline-block;
+      text-decoration: none; /* Remove a decoração de link */
+      margin-right: 10px;
+     
+  }
+  .social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; /* Ajuste o tamanho do círculo conforme necessário */
+    height: 40px; /* Ajuste o tamanho do círculo conforme necessário */
+    border-radius: 50%; /* Faz com que o elemento seja um círculo */
+    background-color: #3f3f3f; /* Cor de fundo cinza */
+    text-decoration: none; /* Remove a decoração de link */
+}
+.social-icons a i {
+    font-size: 16px; /* Ajuste o tamanho do ícone conforme necessário */
+    color: #FFF; /* Cor do ícone */
+    text-decoration: none; /* Remove a decoração de link */
+}
+
+
+  .social-icons a:active,
+  .social-icons a:focus,
+  .social-icons a:hover {
+      color: #fff;
+      background-color: #337ab7;
+  }
+
+  @media (max-width: 767px) {
+      .site-footer {
+          padding-bottom: 0;
+      }
+      .site-footer .copyright-text,
+      .site-footer .social-icons {
+          text-align: center;
+      }
+      .social-icons {
+          text-align: center;
+      }
+  }
+
+  .text-justify {
+      text-align: justify;
+  }
+
+</style>
+
+      <footer class="site-footer">
+          <div class="col-md-6">
+              <h6>Quem Somos?</h6>
+              <p class="text-justify">Somos uma rede social destinada para apreciadores de livros, filmes, séries e novelas; com o objetivo de enaltecer nossas produções nacionais.</p>
+          </div>
+          <div class="col-md-8">
+              <h6>Quick Links</h6>
+              <ul class="footer-links">
+              <li><a href="../termos_qs/quem_somos.php">Sobre Nós</a></li>
+              <li><a href="../termos_qs/termos_de_Uso.php">Termos de Uso</a></li>
+              <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=liverbrasil@gmail.com">Fale Conosco</a></li>
+              </ul>
+          </div>
+          <hr>
+          <div class="row">
+          <div class="col-md-8">
+              <p class="copyright-text">Copyright &copy; 2023</p>
+          </div>
+          <div class="col-md-3">
+              <ul class="social-icons">
+                  <li><a class="instagram" href="https://www.instagram.com/liverbr_/"><i class="fa fa-instagram"></i></a></li>
+                  <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+              </ul>
+          </div>
+      </div>
+      </footer>';
+}
+
+
+
+function catRodape() {
+  
+    echo '
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> 
+    </head>
+    <style>
+  
+    body {
+        position: relative;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+  
+    .site-footer {
+        margin-top: 15%;
+        position: relative;
+        width: 101%;
+        background-color: #26272b;
+        padding: 50px 100px;
+        font-size: 15px;
+        line-height: 25px;
+        color: #fff;
+        
+    }
+  
+    .site-footer hr {
+        border-top-color: #bbb;
+        opacity: 0.3;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+  
+    .site-footer h6 {
+        font-size: 18px;
+        text-transform: uppercase;
+        margin-top: 10px;
+        margin-bottom: 10px; /* Reduzindo o espaçamento aqui */
+        letter-spacing: 2px;
+        color: #29aafe;
+    }
+  
+    .site-footer p.text-justify {
+        text-align: justify;
+        text-decoration: none; /* Remove a decoração de link */
+  
+    }
+    .footer-links {
+        list-style: none; /* Remove os marcadores de lista */
+        padding: 0; /* Remova qualquer padding padrão */
+    }
+    
+    .footer-links li {
+        margin-left: 0; /* Remove qualquer recuo (indentação) padrão */
+    }
+    
+    .footer-links a {
+        color: #4f4f4f; /* Cor padrão para os links */
+        text-decoration: none; /* Remove a decoração de link (sublinhado) */
+    }
+    
+    .footer-links a:hover {
+        color: #4747eb; /* Define a cor azul quando o mouse está em cima */
+    }
+    .footer-links a:active,
+    .footer-links a:focus,
+    .footer-links a:hover {
+        color: #3366cc;
+        text-decoration: none;
+  
+    }
+    .social-icons {
+      text-align: right; /* Isso alinha os ícones mais para a direita */
+      margin-top: -40px;
+  }
+  
+    .social-icons li {
+        display: inline-block;
+        text-decoration: none; /* Remove a decoração de link */
+        margin-right: 10px;
+       
+    }
+    .social-icons a {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px; /* Ajuste o tamanho do círculo conforme necessário */
+      height: 40px; /* Ajuste o tamanho do círculo conforme necessário */
+      border-radius: 50%; /* Faz com que o elemento seja um círculo */
+      background-color: #3f3f3f; /* Cor de fundo cinza */
+      text-decoration: none; /* Remove a decoração de link */
+  }
+  .social-icons a i {
+      font-size: 16px; /* Ajuste o tamanho do ícone conforme necessário */
+      color: #FFF; /* Cor do ícone */
+      text-decoration: none; /* Remove a decoração de link */
+  }
+  
+  
+    .social-icons a:active,
+    .social-icons a:focus,
+    .social-icons a:hover {
+        color: #fff;
+        background-color: #337ab7;
+    }
+  
+    @media (max-width: 767px) {
+        .site-footer {
+            padding-bottom: 0;
+        }
+        .site-footer .copyright-text,
+        .site-footer .social-icons {
+            text-align: center;
+        }
+
+    }
+  
+    .text-justify {
+        text-align: justify;
+    }
+  
+  </style>
+  
+        <footer class="site-footer">
+            <div class="col-md-6">
+                <h6>Quem Somos?</h6>
+                <p class="text-justify">Somos uma rede social destinada para apreciadores de livros, filmes, séries e novelas; com o objetivo de enaltecer nossas produções nacionais.</p>
+            </div>
+            <div class="col-md-8">
+                <h6>Quick Links</h6>
+                <ul class="footer-links">
+                      <li><a href="../termos_qs/quem_somos.php">Sobre Nós</a></li>
+                      <li><a href="../termos_qs/termos_de_Uso.php">Termos de Uso</a></li>
+                      <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=liverbrasil@gmail.com">Fale Conosco</a></li>
+                </ul>
+            </div>
+            <hr>
+            <div class="col-md-8">
+                <p class="copyright-text">Copyright &copy; 2023</p>
+            </div>
+            <div class="col-md-11">
+                <ul class="social-icons">
+                    <li><a class="instagram" href="https://www.instagram.com/liverbr_/"><i class="fa fa-instagram"></i></a></li>
+                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                </ul>
+            </div>
+
+        </footer>';
+  }
 ?>
+
+
+
+
