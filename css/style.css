@@ -1,6 +1,4 @@
-/* Google Fonts - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-
 
 body{
   min-height: 100vh;
@@ -16,7 +14,6 @@ body{
 .content-main {
   margin-bottom: 150px; /* Ajuste a altura conforme necessário */
 }
-
 
 /*Estilo da NAVBAR*/
 
@@ -164,7 +161,6 @@ body{
     }    
   }
 
-
   /*Estilo da VITRINE*/
     .slide-container{  
       max-width: 1120px;
@@ -301,7 +297,6 @@ body{
     }
 
     .box-formulario{
-
       align-items: center;
       display: flex;
       flex-direction: row;
@@ -310,16 +305,11 @@ body{
       border-radius: 20px;
       background-color: rgb(0, 0, 0);
       opacity: 0.8;
-      width: 600px;
-   
+      width: 600px; 
     }
+
    section.perfil{ 
-   
-
- 
-
     text-align: center;
-    
    }
 
   .title{
@@ -394,4 +384,214 @@ body{
 
   #nome::placeholder, #username::placeholder {
 float:right;
+}
+
+/*o lindo rodapé*/
+.site-footer
+{
+  position: absolute;
+  top: 2990px;
+  width: 100%;
+  right: 0px;
+  background-color:#26272b;
+  height: 450px; /* Ajuste o valor conforme necessário */
+  padding: 50px 80px; /* Ajuste o valor conforme necessário para controlar o espaçamento interno */
+  font-size:15px;
+  line-height:24px;
+  color:#737373;
+}
+.site-footer hr
+{
+  border-top-color:#bbb;
+  opacity: 0.3;
+  position: relative;
+  top: px;
+}
+.site-footer hr.small
+{
+  margin:80px 0;
+}
+.site-footer h6
+{
+  color:#fff;
+  font-size:18px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+.site-footer a
+{
+  color:#737373;
+}
+.site-footer a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links
+{
+  padding-left:0;
+  list-style:none
+}
+.footer-links li
+{
+  display:block
+}
+.footer-links a
+{
+  color:#737373
+}
+.footer-links a:active,.footer-links a:focus,.footer-links a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links.inline li
+{
+  display:inline-block;
+}
+.site-footer .social-icons
+{
+  position: relative;
+  right: -130px;
+  text-align:right;
+}
+.site-footer .social-icons a
+{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 6px;
+    margin-right: 5px; /* Adicione a unidade de medida, por exemplo, 1000px */
+    border-radius: 100%;
+    background-color: #33353d;
+}
+.site-footer .copyright-text
+{
+    margin-bottom: 50px;
+}
+@media (max-width:991px)
+{
+  .site-footer [class^=col-]
+  {
+    margin-bottom:50px
+  }
+}
+@media (max-width:767px)
+{
+  .site-footer
+  {
+    padding-bottom:0
+  }
+  .site-footer .copyright-text,.site-footer .social-icons
+  {
+    text-align:center
+  }
+}
+.social-icons
+{
+  padding-left:0;
+  margin-bottom:0;
+  list-style:none
+}
+.social-icons li
+{
+  display:inline-block;
+  margin-bottom:4px
+}
+.social-icons li.title
+{
+  margin-right:15px;
+  text-transform:uppercase;
+  color:#96a2b2;
+  font-weight:700;
+  font-size:13px
+}
+.social-icons a{
+  position: relative;
+  margin-right: 80px;
+  background-color:#eceeef;
+  color:#818a91;
+  font-size:16px;
+  display:inline-block;
+  line-height:44px;
+  width:44px;
+  height:44px;
+  text-align:center;
+  border-radius:100%;
+  -webkit-transition:all .2s linear;
+  -o-transition:all .2s linear;
+  transition:all .2s linear
+}
+.social-icons a:active,.social-icons a:focus,.social-icons a:hover
+{
+  color:#fff;
+  background-color:#29aafe
+}
+.social-icons.size-sm a
+{
+  line-height:34px;
+  height:34px;
+  width:34px;
+  font-size:14px
+}
+.social-icons a.facebook:hover
+{
+  background-color:#3b5998
+}
+.social-icons a.twitter:hover
+{
+  background-color:#00aced
+}
+.social-icons a.linkedin:hover
+{
+  background-color:#007bb6
+}
+.social-icons a.dribbble:hover
+{
+  background-color:#ea4c89
+}
+@media (max-width:767px)
+{
+  .social-icons li.title
+  {
+    display:block;
+    margin-right:0;
+    font-weight:600
+  }
+}
+
+/* cards categorias*/
+/* Estilo para o card em geral */
+.card {
+  /* suas configurações aqui */
+  border: 1px solid #1a1818; /* Exemplo de uma borda de 1px sólida */
+  border-radius: 10px; /* Exemplo de borda arredondada */
+}
+
+/* Estilo para a imagem no card */
+.card .card-img-top {
+  /* suas configurações aqui */
+  width: 100%; /* A imagem deve ocupar toda a largura do card */
+  height: auto; /* Ajusta a altura automaticamente */
+}
+
+/* Estilo para o corpo do card */
+.card .card-body {
+  /* suas configurações aqui */
+  padding: 1rem; /* Exemplo de preenchimento interno */
+}
+
+/* Estilo para o título do card */
+.card .card-title {
+  /* suas configurações aqui */
+  font-size: 1.50rem; /* Exemplo de tamanho de fonte */
+  font-weight: bold; /* Exemplo de negrito */
+}
+
+/* Estilo para o texto do card */
+.card .card-text {
+  /* suas configurações aqui */
+  font-size: 1rem; /* Exemplo de tamanho de fonte */
+  color: #333; /* Exemplo de cor do texto */
 }
