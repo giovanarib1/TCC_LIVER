@@ -44,7 +44,7 @@ else {
     }
 
     // Diretório onde as fotos serão armazenadas
-    $diretorioFotoP = '../imagens/img_user/fotos_usuario';
+    $diretorioFotoP = '../imagens/img_user/fotos_user';
     $diretorioFotoC = '../imagens/img_user/fotos_capa';
 
     // Mover foto de perfil
@@ -59,8 +59,8 @@ else {
 
     // Executar a consulta SQL
     if (mysqli_query($con, $sql)) {
-        echo "Dados do perfil salvos com sucesso!";
-        header('refresh:3;./perfil_user.php');
+        echo "<script>alert('Dados do perfil salvos com sucesso!');</script>";
+        header('refresh:0.5;./perfil_user.php');
     } else {
         echo "<script>alert('Ocorreu um erro. Tente novamente mais tarde.');</script>";
         header('refresh:3;./perfil_config.php');
