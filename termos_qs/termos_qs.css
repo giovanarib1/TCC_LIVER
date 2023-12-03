@@ -1,4 +1,5 @@
-body{
+body{     /* Propriedades de estilo para o corpo da página.*/
+
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -13,7 +14,7 @@ body{
 
 /*Estilo da NAVBAR*/
 
-    .navbar-nav {
+    .navbar-nav {  /* Propriedades de estilo para a barra de navegação.*/
       display: flex;
       justify-content: center;
       align-items: center;
@@ -69,93 +70,94 @@ body{
       left: 0;
       background-color: black; 
     }
+
   
 /*Estilo Termo de Uso*/
 
-    .barra{ position: absolute;
-width: 350px;
-height: 2px;
-left: 12,5px;
-background: linear-gradient(89.91deg,  rgb(,23, 100, 255) , rgb(7, 250, 60),rgb(0,7, 250, 0) 80.04%);
-border-radius: 36px;
-color: black;
-top: 110px;
-}
-  p {
-      text-align: justify;
-    }
-
-    /*Estilo Ródapé*/
- .footer{
-  position: absolute;
-  width: 100%;
-  left: -0px;
-  display: flex;
-  height: 8%;
-  justify-content: space-between;
-  align-items: center;
-  background: #333;
-padding: 0px 20px;
-color: white;
-}
-
-
-.barra2 {
-position: relative;
-  left:-1px;
-height: 10px;
-border: 1px solid #FDFDFD;
-border-radius: 2px;
-transform: rotate(-90deg);
-}
-
-
-.barra3 {
-position: relative;
- left: -4px;
- height: 10px;
-border: 1px solid #FDFDFD;
-border-radius: 2px;
-transform: rotate(-90deg);
-
+ .pagetermo {
+            max-width:1000px; /* Ajuste a largura conforme necessário */
+            text-align: justify;
+             margin: 0 auto; 
+                font-size: 18px
 
 }
 
 
-.emailimg{
-  position: relative;
-  left:3px;
-  color: #fff;
-      text-decoration: none;
-}
-.email{
-  position: relative;
-  left:-0px;
-  color: #fff;
-      text-decoration: none;
-}
-.quem{
-  position: relative;
-  left:-4px;
-  color: #fff;
-      text-decoration: none;
+  .frame-childd {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* Ajuste a altura conforme necessário */
+        
+        }
+
+
+    /*Quem Somoa*/
+
+
+        .frame-child { /* Propriedades de estilo para o contêiner do formulário.*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* Ajuste a altura conforme necessário */
+        
+        }
+
+        .pagelogin {
+            max-width:1000px; /* Ajuste a largura conforme necessário */
+            text-align: center;
+             margin: 0 auto; 
+                font-size: 18px;
+        }
+
+        .image-1-icon {   /* Propriedades de estilo para a imagem do formulário*/
+           position: relative;
+            display: block;
+            width:370px;
+          height: none;
+          left: 33%;
+
+        }
+
+        h5,h2, h3 {
+            color: gray; /* Cor do texto */
+            text-align: center;
+        }
+
+        section {
+            margin-top: 20px;
+        }
+
+        .barra {
+            width: 500px; /* Ajuste a largura da barra conforme necessário */
+            height: 2px;
+            background-color: #333; /* Cor da barra */
+            margin: 10px auto; /* Centraliza a barra */
+            
 }
 
-.termo{
-  position: relative;
-  left:-1px;
-  color: #fff;
-      text-decoration: none;
-}
-.insta{
-  position: relative;
-  left:-1px;
-  color: #fff;
-      text-decoration: none;
-}
-.twitter{
-  position: relative;
-  left:-1px;
-  color: #fff;
-      text-decoration: none;
-}
+        
+a p {
+            line-height: 1.5;
+         
+            text-align:justify; 
+        }
+
+
+        /* Estilo para a seção de desenvolvedores */
+        .dev-section {
+          text-align: center;
+     
+          
+       
+        }
+
+        .dev-sectionn p {
+            text-align: justify;
+           
+        }
+
+
+
+
+
