@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="../imagens/logo2_liver.png" type="image/x-icon">
-    <title>Citações</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script> 
-    <link rel="stylesheet" type="text/css" href="./citacoes.css"/>
+    <title>Citação no Liver</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-
-
 <div class="container-fluid">
     <!--NAVBAR-->
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark w-100">
@@ -74,113 +68,64 @@
     <br><br><br><br>
     <!--NAVBAR TERMINA-->
 
-
-
 <?php
 // Conecta-se ao banco de dados
-require '../conexao.php'; 
-require "../funcoes/functions.php";
+require '../conexao.php';
+
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['ID_USUARIO'])) {
+    header('Location: ../login/index.html');
+    exit();
+}
+
+// Obtém o ID do usuário logado
+$idUsuario = $_SESSION['ID_USUARIO'];
+$idObra = $_POST['id_obra'];
+$_SESSION['id_obra'] = $idObra;
 
 mysqli_query($con, "SET NAMES 'utf8'");
 mysqli_query($con, 'SET character_set_connection=utf8');
 mysqli_query($con, 'SET character_set_client=utf8');
 mysqli_query($con, 'SET character_set_results=utf8');
 
-// Passo 2: Realizar a consulta SQL
-$stmt = mysqli_prepare($con, "SELECT citacoes.*, obra.NOME_OBRA
-FROM citacoes INNER JOIN obra ON citacoes.obra_ID_OBRA = obra.ID_OBRA LIMIT 25");
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
-
-// Verificando se a consulta foi bem-sucedida
-if (!$result) {
-    die("Erro na consulta: " . mysqli_error($con));
-}
-
-
+$comando = "SELECT * FROM obra where ID_OBRA = $idObra";
+$resulta = mysqli_query($con, $comando);
+$p = 0;
 ?>
-<center>
 
-<h1>Citações</h1>
-</center>
+<div style='text-align: center'>
 
 <?php
-echo "<div class='flex-container'>";
-while ($row = mysqli_fetch_assoc($result)) {
-    echo "<div class='flex-item'>";
-    echo "<p class='descr'>" . $row['DESC_CITACAO'] . "</p>";
-    echo "<p class='noobra'>-" . $row['NOME_OBRA'] . "</p>";
-    echo "<form class='favcit-form' action='../citacoes/salvar_citacao.php' method='POST'>";
-    echo "<input type='hidden' name='cit' value='{$row['ID_CITACOES']}'>";
-    echo "<input type='hidden'  name='obra' value='{$row['obra_ID_OBRA']}'>";
-    echo "<button class='favcit' type='submit'>";
- echo '<div id="passar_mouse"><i class="fas fa-heart"></i><div id="mostrar">Curtir</div></div>';       
-echo '</button>'; 
-echo "</form>";
-    echo "</div>";
-}
-echo "</div>";
+while ($registro = mysqli_fetch_array($resulta)) {
 ?>
 
-<script>
-const addButtonsCit = document.querySelectorAll('.favcit');
-const addFormsCit = document.querySelectorAll('.favcit-form');
+<div style='text-align: center'>
 
-addButtonsCit.forEach((button, index) => {
-    button.addEventListener('click', function() {
-        // Envie o formulário correspondente ao botão clicado
-        addFormsCit[index].submit();
-    });
-});
-</script>
+    <div style='display: flex; justify-content: center; align-items: center; margin-bottom: 20px;'>
 
+        <div style='margin-right: 20px;'>
+            <img src='../imagens/img_obras/<?php echo $registro['FOTO_OBRA']; ?>' width='270' height='360' alt='Foto da Obra'>
+        </div>
 
- <script>
-    const addButtonsCit = document.querySelectorAll('.favcit');
-    const obraInputCit = document.getElementById('obraInputFavCit');
-    const addFormCit = document.getElementById('facit');
+        <div>
+            <p><strong></strong> <?php echo $registro['NOME_OBRA']; ?></p>
+            <form name='fox' action='./doCad_citacoes.php' method='POST'>
+                <input name='id_obra' value='id_obra' id='id_obra' type='hidden' value='<?php echo $idObra; ?>'><br><br>
+                <p><strong>Citação</strong> <br><br>
+                <textarea name='txtCitacao' id='txtCitacao'></textarea></p>
+                <p><input type='submit' name='bot2' value='Enviar' class='btn btn-primary'></p>
+            </form>
+        </div>
 
-    addButtonsCit.forEach(button => {
-        button.addEventListener('click', function() {
-            const obraId = button.getAttribute('data-id');
-            obraInputFavCit.value = obraId;
-            facit.submit();
-        });
-    });
- </script>
+    </div>
 
- <?php /*
-    // Passo 3: Mostrar os dados na tela
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
-        echo "<td>" . $row['DESC_CITACAO'] . "</td>";
-        echo "<td>" . $row['NOME_OBRA'] . "</td>";
-        echo "</tr>"; ?>
+<?php
+}
 
-    <button class="favcit" data-id= "oi">Curtir</button>
-    <form id="facit" action="./citacoes/salvar_citacao.php" method="POST">
-    <input type="hidden" id="obraInputFavCit" name="obra" value="">
-    </form>
-
- <?php
-    }
-    mysqli_close($con); */
-
-    ?>
-
-    <!-- RODAPÉ  --> 
-    <?php 
-    Rodape();
-    ?>
-<!-- RODAPÉ  --> 
-    
-
+$close = mysqli_close($con);
+?>
+</div>
 
 </body>
-
-
-
-
-
-
 </html>
